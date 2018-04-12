@@ -1,42 +1,83 @@
 package com.cccisi.privacycollector;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.cccisi.privacycollector.Czh.CzhActivity;
+import com.cccisi.privacycollector.czh.CzhActivity;
+import com.cccisi.privacycollector.lyc.LycActivity;
+import com.cccisi.privacycollector.xsy.XsyActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private final String TAG = "MainActivity";
+public class MainActivity extends Activity {
 
-    private ImageButton mImageButton_Password, mImageButton_Note;
+    private static final String TAG = "MainActivity";
+
+    public ImageButton mIB_password;
+    @BindView(R.id.imageButton_Password)
+    ImageButton mImageButtonPassword;
+    @BindView(R.id.imageButton_BasicInformation)
+    ImageButton mImageButtonBasicInformation;
+    @BindView(R.id.imageButton_Recorder)
+    ImageButton mImageButtonRecorder;
+    @BindView(R.id.imageButton_Note)
+    ImageButton mImageButtonNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        initLayout();
+//        initLayout();
     }
 
-    private void initLayout() {
-        mImageButton_Password = (ImageButton) findViewById(R.id.imageButton_Password);
+//    private void initLayout() {
+//
+//
+//    }
 
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.imageButton_Password:
+//                Intent intent = new Intent(MainActivity.this, CzhActivity.class);
+//                intent.putExtra("MainActivity", TAG);
+//                MainActivity.this.startActivity(intent);
+//                break;
+//            default:
+//        }
+//
+//    }
 
-    }
-
-    @Override
-    public void onClick(View view) {
+    @OnClick({R.id.imageButton_Password, R.id.imageButton_BasicInformation, R.id.imageButton_Recorder, R.id.imageButton_Note})
+    public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageButton_Password:
-                Intent intent = new Intent(MainActivity.this, CzhActivity.class);
-                intent.putExtra("MainActivity", TAG);
-                MainActivity.this.startActivity(intent);
-            default:
+                Intent intent_czh = new Intent(MainActivity.this, CzhActivity.class);
+                intent_czh.putExtra("MainActivity", TAG);
+                MainActivity.this.startActivity(intent_czh);
+                break;
+            case R.id.imageButton_BasicInformation:
+                Intent intent_xsy = new Intent(MainActivity.this, XsyActivity.class);
+                intent_xsy.putExtra("MainActivity", TAG);
+                MainActivity.this.startActivity(intent_xsy);
+                break;
+            case R.id.imageButton_Recorder:
+                Intent intent_lyc = new Intent(MainActivity.this, LycActivity.class);
+                intent_lyc.putExtra("MainActivity", TAG);
+                MainActivity.this.startActivity(intent_lyc);
+                break;
+            case R.id.imageButton_Note:
+                Intent intent_note = new Intent(MainActivity.this, LycActivity.class);
+                intent_note.putExtra("MainActivity", TAG);
+                MainActivity.this.startActivity(intent_note);
+                break;
         }
-
     }
 }

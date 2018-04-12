@@ -1,15 +1,14 @@
-package com.cccisi.privacycollector;
+package com.cccisi.privacycollector.xsy;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by cccis on 2018/4/12.
- * 暂不使用，留作备用
  */
 
-public class IntroductionActivity extends AppCompatActivity {
+public class XsyActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
