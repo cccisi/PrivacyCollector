@@ -11,6 +11,8 @@ import com.cccisi.privacycollector.R;
 
 /**
  * Created by cccis on 2018/4/12.
+ * CZH负责
+ * 功能介绍：
  */
 
 public class CzhActivity extends Activity {
