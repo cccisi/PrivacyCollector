@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
 
+/**
+ * keystore: privacycollecter.jks
+ * keystore password: privacycollecter
+ * alias: privacycollecter
+ * password: privacycollecter
+ */
+
 android {
     compileSdkVersion 26
     defaultConfig {

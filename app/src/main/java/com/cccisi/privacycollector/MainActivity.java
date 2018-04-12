@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imageButton_Password:
                 Intent intent = new Intent(MainActivity.this, CzhActivity.class);
                 intent.putExtra("MainActivity", TAG);
-                startActivity(intent);
+                MainActivity.this.startActivity(intent);
+            default:
         }
 
     }
