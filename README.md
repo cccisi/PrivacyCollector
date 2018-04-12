@@ -10,7 +10,7 @@ ICON来源：http://sc.chinaz.com/tubiao/180403237450.htm
 
 图片来源：www.graphicsfuel.com
 
-##APK下载
+## APK下载
 
 ![APK下载](https://github.com/cccisi/PrivacyCollector/blob/master/doc/QR.png)
 
