@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final String TAG = "MainActivity";
 
-    private ImageButton mImageButton_Password;
+    private ImageButton mImageButton_Password, mImageButton_Note;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
