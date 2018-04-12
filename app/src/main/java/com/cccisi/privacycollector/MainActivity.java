@@ -18,7 +18,6 @@ public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
 
-    public ImageButton mIB_password;
     @BindView(R.id.imageButton_Password)
     ImageButton mImageButtonPassword;
     @BindView(R.id.imageButton_BasicInformation)
@@ -34,13 +33,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-//        initLayout();
     }
 
-//    private void initLayout() {
-//
-//
-//    }
 
 //    @Override
 //    public void onClick(View view) {
