@@ -23,7 +23,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 - *桌面图标*
 - <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png" width = "100" height = "100" alt="icon" align=center />
 - *主界面*
-- <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg" width = "1080" height = "1920" alt="主页面" align=center />
+- <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg" width = "360" height = "540" alt="主页面" align=center />
 
 ### [CZH](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/czh)
 
