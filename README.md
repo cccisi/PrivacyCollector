@@ -18,13 +18,13 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ### [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/app/src/main/java/com/cccisi/privacycollector/MainActivity.java)
 
-- **效果展示
-- ![icon](https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png)
-- ![主页面](https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg)
+- ** 效果展示
+- [icon](https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png  =100x100)
+- [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg  =1080x1920)
 
 ### [CZH](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/czh)
 
-- **效果展示
+- ** 效果展示
 - ![主页面]()
 
 - **功能**
@@ -34,7 +34,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ### [XSY](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/xsy)
 
-- **效果展示
+- ** 效果展示
 - ![主页面]()
 
 - **功能**
@@ -42,7 +42,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ### [LYC](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/lyc)
 
-- **效果展示
+- ** 效果展示
 - ![主页面]()
 
 - **功能**
@@ -63,7 +63,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ## 五、元素引用说明
 
-- **所用部分图片非本人原创，取自开源网站，如有争议，请联系。
+- **所用部分图片非本人原创，取自开源网站，如有争议，请联系。**
 
 - ICON来源：http://sc.chinaz.com/tubiao/180403237450.htm
 
