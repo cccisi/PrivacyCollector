@@ -19,7 +19,8 @@ PrivacyCollector is a homework of Measurement of mobile.
 ### [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/app/src/main/java/com/cccisi/privacycollector/MainActivity.java)
 
 - **效果展示
-- ![主页面]()
+- ![icon](https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png)
+- ![主页面](https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg)
 
 ### [CZH](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/czh)
 
@@ -67,4 +68,28 @@ PrivacyCollector is a homework of Measurement of mobile.
 - ICON来源：http://sc.chinaz.com/tubiao/180403237450.htm
 
 - 图片来源：www.graphicsfuel.com
+
+## License
+
+```
+Copyright (c) 2018 Zachary Chen, XSY, LYC, PP, HM, RXS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
