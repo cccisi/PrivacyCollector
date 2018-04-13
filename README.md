@@ -19,6 +19,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 ### [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/app/src/main/java/com/cccisi/privacycollector/MainActivity.java)
 
 **效果展示**
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png" width = "100" height = "100" alt="icon" align=center />
 - [icon](https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png  =100x100)
 - [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg  =1080x1920)
 
