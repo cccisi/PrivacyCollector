@@ -54,22 +54,22 @@ public class MainActivity extends Activity {
         switch (view.getId()) {
             case R.id.imageButton_Password:
                 Intent intent_czh = new Intent(MainActivity.this, CzhActivity.class);
-                intent_czh.putExtra("MainActivity", TAG);
+                intent_czh.putExtra("CzhActivity", TAG);
                 MainActivity.this.startActivity(intent_czh);
                 break;
             case R.id.imageButton_BasicInformation:
                 Intent intent_xsy = new Intent(MainActivity.this, XsyActivity.class);
-                intent_xsy.putExtra("MainActivity", TAG);
+                intent_xsy.putExtra("XsyActivity", TAG);
                 MainActivity.this.startActivity(intent_xsy);
                 break;
             case R.id.imageButton_Recorder:
                 Intent intent_lyc = new Intent(MainActivity.this, LycActivity.class);
-                intent_lyc.putExtra("MainActivity", TAG);
+                intent_lyc.putExtra("LycActivity", TAG);
                 MainActivity.this.startActivity(intent_lyc);
                 break;
             case R.id.imageButton_Note:
-                Intent intent_note = new Intent(MainActivity.this, LycActivity.class);
-                intent_note.putExtra("MainActivity", TAG);
+                Intent intent_note = new Intent(MainActivity.this, NoteActivity.class);
+                intent_note.putExtra("NoteActivity", TAG);
                 MainActivity.this.startActivity(intent_note);
                 break;
         }
