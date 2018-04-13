@@ -18,13 +18,13 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ### [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/app/src/main/java/com/cccisi/privacycollector/MainActivity.java)
 
-- ** 效果展示
+**效果展示**
 - [icon](https://github.com/cccisi/PrivacyCollector/blob/master/doc/icon.png  =100x100)
 - [主页面](https://github.com/cccisi/PrivacyCollector/blob/master/doc/prscan.jpg  =1080x1920)
 
 ### [CZH](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/czh)
 
-- ** 效果展示
+**效果展示**
 - ![主页面]()
 
 - **功能**
@@ -34,7 +34,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ### [XSY](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/xsy)
 
-- ** 效果展示
+**效果展示**
 - ![主页面]()
 
 - **功能**
@@ -42,7 +42,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 ### [LYC](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/lyc)
 
-- ** 效果展示
+**效果展示**
 - ![主页面]()
 
 - **功能**
@@ -59,19 +59,22 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 
 - **扫码下载**（请使用浏览器，不要使用微信扫描！）
-- ![APK下载](https://github.com/cccisi/PrivacyCollector/blob/master/doc/QR.png)
+
+![APK下载](https://github.com/cccisi/PrivacyCollector/blob/master/doc/QR.png)
 
 ## 五、元素引用说明
 
 - **所用部分图片非本人原创，取自开源网站，如有争议，请联系。**
 
-- ICON来源：http://sc.chinaz.com/tubiao/180403237450.htm
+ ICON来源：http://sc.chinaz.com/tubiao/180403237450.htm
 
-- 图片来源：www.graphicsfuel.com
+ 图片来源：www.graphicsfuel.com
 
-## License
+## [License](https://github.com/cccisi/PrivacyCollector/blob/master/LICENSE)
 
 ```
+MIT License
+
 Copyright (c) 2018 Zachary Chen, XSY, LYC, PP, HM, RXS
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
