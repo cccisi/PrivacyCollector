@@ -156,7 +156,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".czh.CzhActivity" />
+        <activity
+            android:name=".czh.CzhActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".xsy.XsyActivity" />
         <activity android:name=".lyc.LycActivity" />
         <activity android:name=".NoteActivity" />

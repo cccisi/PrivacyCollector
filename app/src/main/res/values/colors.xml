@@ -6,4 +6,8 @@
 
     <color name="Introduction">#ffd55c</color>
     <color name="webbackground">#06478e</color>
+
+    <color name="edit_bg">#111e32</color>
+    <color name="edit">#adadad</color>
+    <color name="search_button">#111e32</color>
 </resources>

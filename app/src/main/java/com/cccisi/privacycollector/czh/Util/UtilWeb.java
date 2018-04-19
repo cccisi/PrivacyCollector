@@ -14,7 +14,7 @@ public class UtilWeb {
         web.loadUrl(url);
         WebSettings webSettings = web.getSettings();
 
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK); //设置缓存
+//        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK); //设置缓存
 
         webSettings.setJavaScriptEnabled(true);//设置能够解析Javascript
 
