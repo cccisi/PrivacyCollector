@@ -69,11 +69,18 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 - **使用介绍**
 - 1.在浏览过程中,可能需要登陆；
+
 <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/home.jpg" width = "360" height = "230" alt="点击登陆" align=center />
+
 - 2.当app判断是登录页面时,弹出钓鱼页面；
+
 <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/login.jpg" width = "360" height = "530" alt="login" align=center />
+
 - 3.可以通过悬浮按钮查看记录;
+
 <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/check.jpg" width = "360" height = "0" alt="查看" align=center />
+
+- 查看结果
 
 <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/record.png" width = "360" height = "110" alt="记录" align=center />
 
