@@ -46,7 +46,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 * 系统页面获取手机品牌，android版本，SDK版本，手机运营商，手机号码（有些可获取）
 
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/Xsy_sys.png" width = "360" height = "540" alt="系统页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/Xsy_system.png" width = "360" height = "540" alt="系统页面" align=center />
 
 * App页面获取应用程序安装列表以及正在后台运行的应用
 
