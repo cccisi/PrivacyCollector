@@ -10,7 +10,7 @@
     <item
         android:id="@+id/sys"
         android:orderInCategory="1"
-        android:icon="@drawable/ic_system"
+        android:icon="@drawable/ic_sys"
         android:title="@string/system" />
 
     <item

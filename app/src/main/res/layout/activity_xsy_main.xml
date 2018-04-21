@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".xsy.XsyMainActivity">
+    tools:context=".xsy.XsyActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

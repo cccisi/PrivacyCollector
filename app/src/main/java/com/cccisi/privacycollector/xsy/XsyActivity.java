@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 
 
 
-public class XsyMainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class XsyActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
     @BindView(R.id.navigation)
     BottomNavigationView mNavigation;

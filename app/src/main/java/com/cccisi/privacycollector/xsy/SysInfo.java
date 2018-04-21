@@ -54,13 +54,12 @@ public class SysInfo extends ListFragment {
     }
 
     public void getSysInfo(){
-        String[] SInfo= new String[6];
+        String[] SInfo= new String[5];
         SInfo[0] = "手机品牌：" + Build.BRAND;
         SInfo[1] = "手机产品名："+Build.PRODUCT;
         SInfo[2] = "系统版本："+Build.VERSION.RELEASE;
         SInfo[3] = "SDK版本："+Build.VERSION.SDK_INT;
-        SInfo[4] = "出厂时间："+Build.TIME;
-        SInfo[5] = "OS版本："+System.getProperty("os.version");
+        SInfo[4] = "OS版本："+System.getProperty("os.version");
 
         for (int i = 0;i < SInfo.length;i++){
             if (SInfo[i] != null)
