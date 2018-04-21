@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Privacy Collector</string>
+    <string name="title_activity_xsy_main">Your Information</string>
+    <string name="user">You</string>
+    <string name="system">System</string>
+    <string name="apps">Apps</string>
+    <string name="third_app">第三方应用</string>
+    <string name="sys_app">系统应用</string>
+    <string name="running_app">正在运行应用</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/user"
+        android:orderInCategory="0"
+        android:icon="@drawable/ic_user"
+        android:title="@string/user" />
+
+    <item
+        android:id="@+id/sys"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_system"
+        android:title="@string/system" />
+
+    <item
+        android:id="@+id/apps"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_app"
+        android:title="@string/apps" />
+
+</menu>

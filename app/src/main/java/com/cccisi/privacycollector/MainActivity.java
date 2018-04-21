@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import com.cccisi.privacycollector.czh.CzhActivity;
 import com.cccisi.privacycollector.lyc.LycActivity;
-import com.cccisi.privacycollector.xsy.XsyActivity;
+import com.cccisi.privacycollector.xsy.XsyMainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,19 +36,6 @@ public class MainActivity extends Activity {
     }
 
 
-//    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.imageButton_Password:
-//                Intent intent = new Intent(MainActivity.this, CzhActivity.class);
-//                intent.putExtra("MainActivity", TAG);
-//                MainActivity.this.startActivity(intent);
-//                break;
-//            default:
-//        }
-//
-//    }
-
     @OnClick({R.id.imageButton_Password, R.id.imageButton_BasicInformation, R.id.imageButton_Recorder, R.id.imageButton_Note})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -58,8 +45,8 @@ public class MainActivity extends Activity {
                 MainActivity.this.startActivity(intent_czh);
                 break;
             case R.id.imageButton_BasicInformation:
-                Intent intent_xsy = new Intent(MainActivity.this, XsyActivity.class);
-                intent_xsy.putExtra("XsyActivity", TAG);
+                Intent intent_xsy = new Intent(MainActivity.this, XsyMainActivity.class);
+                intent_xsy.putExtra("XsyMainActivity", TAG);
                 MainActivity.this.startActivity(intent_xsy);
                 break;
             case R.id.imageButton_Recorder:
