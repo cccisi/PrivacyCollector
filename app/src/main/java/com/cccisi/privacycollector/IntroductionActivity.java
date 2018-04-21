@@ -1,6 +1,7 @@
 package com.cccisi.privacycollector;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.webkit.WebView;
@@ -18,9 +19,10 @@ import butterknife.ButterKnife;
 
 public class IntroductionActivity extends Activity {
 
-    private final String TAG = "NoteActivit";
+    private final String TAG = "NoteActivity";
     @BindView(R.id.web_note)
     WebView mWebNote;
+    private Context mContext = IntroductionActivity.this;
     private String noteUrl = "https://github.com/cccisi/PrivacyCollector/blob/master/README.md";
 
     @Override
@@ -35,4 +37,5 @@ public class IntroductionActivity extends Activity {
     private void initLayout() {
         UtilWeb.setWeb(mWebNote, noteUrl);
     }
+
 }

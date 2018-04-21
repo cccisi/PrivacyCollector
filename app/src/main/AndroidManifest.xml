@@ -139,6 +139,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_VOICEMAIL" />
+    <!--<uses-permission android:name="android.permission.INJECT_EVENTS" />-->
 
 
     <application

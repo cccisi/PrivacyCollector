@@ -1,6 +1,7 @@
 package com.cccisi.privacycollector.czh;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,8 +10,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,9 +33,7 @@ import com.cccisi.privacycollector.czh.Bean.BaseWebView;
 import com.cccisi.privacycollector.czh.Util.FileOperator;
 import com.cccisi.privacycollector.czh.Util.KeyboardWatcher;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import static com.cccisi.privacycollector.czh.Util.Constant.getUrl;
 import static com.cccisi.privacycollector.czh.Util.Constant.setUrl;
@@ -47,14 +46,11 @@ import static com.cccisi.privacycollector.czh.Util.Constant.setUrl;
 
 public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardToggleListener, View.OnClickListener {
 
+    public static int FLAG = 0; //0表示键盘关闭,1表示键盘启动
     private final String TAG = "CzhActivity";
-    @BindView(R.id.searchBack)
     ImageView mSearchBack;
-    @BindView(R.id.searchEdit)
     EditText mSearchEdit;
-    @BindView(R.id.searchButton)
     Button mSearchButton;
-    @BindView(R.id.web)
     BaseWebView mWeb;
     FloatingActionButton mFlb;
     //    String url = new String("http://www.csdn.net");
@@ -109,6 +105,21 @@ public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardT
                 //判断是否是“GO”键
                 if (actionId == EditorInfo.IME_ACTION_GO) {
                     Toast.makeText(mContext, "点击Go", Toast.LENGTH_LONG).show();
+//                    IBinder imBinder = ServiceManager.getService("input");
+//                    InputManager im = (InputManager) getSystemService(Context.INPUT_SERVICE);
+
+////inject key event
+//                    final KeyEvent keyEvent = new KeyEvent(downTime, eventTime, action,
+//                            code, repeatCount, metaState, deviceId, scancode,
+//                            flags | KeyEvent.FLAG_FROM_SYSTEM |KeyEvent.FLAG_KEEP_TOUCH_MODE | KeyEvent.FLAG_SOFT_KEYBOARD,
+//                            source);
+//                    event.setSource(InputDevice.SOURCE_ANY)
+//                    im.injectInputEvent(keyEvent, InputManager.INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH);
+
+                    //inject pointer event
+//                    motionEvent.setSource(InputDevice.SOURCE_TOUCHSCREEN);
+//                    im.injectInputEvent(motionEvent, InputManager.INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH);
+
                     String temp = mSearchEdit.getText().toString(); //转换为String数据;
                     setWeb(mContext, mWeb, temp);
                     mSearchEdit.setText(temp);
@@ -135,6 +146,13 @@ public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardT
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#111e32"));
         }
+        mWeb = (BaseWebView) findViewById(R.id.web);
+        mSearchButton = (Button) findViewById(R.id.searchButton);
+        mSearchButton.setOnClickListener(this);
+        mSearchEdit = (EditText) findViewById(R.id.searchEdit);
+        mSearchEdit.setOnClickListener(this);
+        mSearchBack = (ImageView) findViewById(R.id.searchBack);
+        mSearchBack.setOnClickListener(this);
         mFlb = (FloatingActionButton) findViewById(R.id.fab);
         mFlb.setOnClickListener(this);
         setWeb(mContext, mWeb, getUrl());
@@ -167,32 +185,45 @@ public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardT
         super.onDestroy();
     }
 
+
+    /**
+     * @Author: Zachary Chen
+     * @Date: 4/21/2018 2:51 PM
+     * @Description: 键盘打开
+     */
     @Override
     public void onKeyboardShown(int keyboardSize) {
+        FLAG = 1;
+        Toast.makeText(mContext, "你打开了键盘!", Toast.LENGTH_SHORT).show();
+    }
 
-
-        Log.e(TAG, "onKeyboardShown: 开启键盘");
+    /**
+     * @Author: Zachary Chen
+     * @Date: 4/21/2018 2:51 PM
+     * @Description: 键盘关闭
+     */
+    @Override
+    public void onKeyboardClosed() {
+        FLAG = 0;
+        Toast.makeText(mContext, "键盘关闭状态!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onKeyboardClosed() {
-
-        Log.e(TAG, "onKeyboardClosed: 关闭键盘");
+    public boolean onTouchEvent(android.view.MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                System.out.println("---action down-----");
+                Toast.makeText(mContext, "起始位置为：" + "(" + event.getX() + " , " + event.getY() + ")", Toast.LENGTH_SHORT).show();
+                break;
+            case MotionEvent.ACTION_UP:
+                System.out.println("---action up-----");
+                Toast.makeText(mContext, "最后位置为：" + "(" + event.getX() + " , " + event.getY() + ")", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
-
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.fab:
-                Intent intent = new Intent(CzhActivity.this, NoteActivity.class);
-                startActivity(intent);
-
-        }
-    }
-
-    @OnClick({R.id.searchBack, R.id.searchEdit, R.id.searchButton, R.id.web})
-    public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.searchBack:
                 Intent intent = new Intent(CzhActivity.this, MainActivity.class);
@@ -208,28 +239,39 @@ public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardT
                 mSearchEdit.setText("http://www.");
                 mSearchEdit.setSelection("http://www.".length());//将光标移至文字末尾
                 break;
-//            case R.id.clearButton:
-//                mSearchEdit.setText("http://www.");
-//                break;
-//            case R.id.web:
-//                mSearchEdit.setText(mWeb.getUrl());
-//                break;
+            case R.id.fab:
+                Intent intent_fab = new Intent(CzhActivity.this, NoteActivity.class);
+                startActivity(intent_fab);
+
         }
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO Auto-generated method stub
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (mWeb.canGoBack()) {
-                mWeb.goBack();//返回上一页面
-                return true;
-            } else {
-                System.exit(0);//退出程序
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @OnClick({R.id.searchBack, R.id.searchEdit, R.id.searchButton, R.id.web})
+//    public void onViewClicked(View view) {
+//        switch (view.getId()) {
+//
+////            case R.id.clearButton:
+////                mSearchEdit.setText("http://www.");
+////                break;
+////            case R.id.web:
+////                mSearchEdit.setText(mWeb.getUrl());
+////                break;
+//        }
+//    }
+
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        // TODO Auto-generated method stub
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            if (mWeb.canGoBack()) {
+//                mWeb.goBack();//返回上一页面
+//                return true;
+//            } else {
+//                System.exit(0);//退出程序
+//            }
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     /**
      * @Author: Zachary Chen
@@ -254,7 +296,14 @@ public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardT
                 mSearchEdit.setText(getUrl());
                 savePrivacy(url);
                 System.out.println("onPageStarted: " + url);
-                ;//实现接口方法并取出数据到外部
+                //实现接口方法并取出数据到外部
+
+                if (url.indexOf("login") != -1) {
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    FakeFragment fakeFragment = new FakeFragment();
+                    transaction.add(R.id.fl_content, fakeFragment);
+                    transaction.commit();
+                }
             }
 
             @Override
