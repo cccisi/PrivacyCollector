@@ -56,7 +56,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 **效果展示**
 - #### 主页面
 
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/visit.jpg" width = "360" height = "540" alt="用户页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/visit.jpg" width = "360" height = "530" alt="用户页面" align=center />
 
 - **总体设想**
 - 设想实现一个能记录用户隐私的浏览器,包括用户名、口令、浏览记录、cookie等,第一步是在本app内置浏览器下记录,未来希望通过绑定service记录其他app的输入记录.
@@ -69,13 +69,13 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 - **使用介绍**
 - 1.在浏览过程中,可能需要登陆；
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/home.png" width = "360" height = "540" alt="用户页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/home.jpg" width = "360" height = "230" alt="点击登陆" align=center />
 - 2.当app判断是登录页面时,弹出钓鱼页面；
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/login.png" width = "360" height = "540" alt="用户页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/login.jpg" width = "360" height = "530" alt="login" align=center />
 - 3.可以通过悬浮按钮查看记录;
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/check.png" width = "360" height = "540" alt="用户页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/check.jpg" width = "360" height = "0" alt="查看" align=center />
 
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/record.png" width = "360" height = "540" alt="用户页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/record.png" width = "360" height = "110" alt="记录" align=center />
 
 - **感想**
 - 1.app直接获取用户输入很难,因为点击或输入事件会被输入法app拦截,开发者拿不到点击位置的数据
@@ -104,7 +104,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 **效果展示**
 - #### 主页面
 
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/Lyc_home.png" width = "360" height = "540" alt="用户页面" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/Lyc_home.jpg" width = "360" height = "530" alt="用户页面" align=center />
 
 - **功能**
 - 1.获取手机中已保存的wifi的SSID（wifi名称），网络状态（可用，禁用，当前连接），加密方式（WEP，无，WPA-PSK/WPA2-PSK，EAP，802.1x EAP）
