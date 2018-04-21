@@ -49,7 +49,11 @@ PrivacyCollector is a homework of Measurement of mobile.
 - ![主页面]()
 
 - **功能**
-- ...
+- 1.获取手机中已保存的wifi的SSID（wifi名称），网络状态（可用，禁用，当前连接），加密方式（WEP，无，WPA-PSK/WPA2-PSK，EAP，802.1x EAP）
+- 2.获取周围可扫描到的wifi，尤其是加密方式为“无”的wifi
+- 3.选择一个上述加密方式为“无”的wifi，新建一个假冒的热点，可以用这个钓鱼wifi吸引其他人连接，从而实施一些攻击（具体攻击方法未实现，只实现开启一个假冒的热点）
+
+2/3正在写……1已经实现了……
 
 ## 三、其他参考资料
 
