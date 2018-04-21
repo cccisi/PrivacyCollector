@@ -42,15 +42,15 @@ PrivacyCollector is a homework of Measurement of mobile.
 - **功能**
 - 用户页面获取位置及通讯录内容，鉴于有些人习惯于将联系人称呼写入通讯录，因此可以获取用户关系密切之人信息（暂未实现）
 
-![Xsy_user](doc/Xsy_user.png)
+![Xsy_user](./doc/Xsy_user.png)
 
 * 系统页面获取手机品牌，android版本，SDK版本，手机运营商，手机号码（有些可获取）
 
-![Xsy_system](doc/Xsy_system.png)
+![Xsy_system](./doc/Xsy_system.png)
 
 * App页面获取应用程序安装列表以及正在后台运行的应用
 
-![Xsy_app](doc/Xsy_app.png)
+![Xsy_app](./doc/Xsy_app.png)
 
 ### [LYC](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/lyc)
 
