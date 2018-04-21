@@ -80,7 +80,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/check.jpg" width = "360" height = "540" alt="查看" align=center />
 
-- 查看结果
+- 查看结果,这里获取了csdn的用户名\口令
 
 <img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/record.png" width = "360" height = "110" alt="记录" align=center />
 
