@@ -302,6 +302,8 @@ public class CzhActivity extends Activity implements KeyboardWatcher.OnKeyboardT
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     FakeFragment fakeFragment = new FakeFragment();
                     transaction.add(R.id.fl_content, fakeFragment);
+                    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    transaction.addToBackStack(null);
                     transaction.commit();
                 }
             }
