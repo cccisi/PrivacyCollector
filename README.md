@@ -1,7 +1,7 @@
 # 移动测评作业第一题(PrivacyCollector)
 
 PrivacyCollector is a homework of Measurement of mobile.
-- **目前仅为一个Demo，里面有几个Activity，等待着我们完善！**
+- **目前是Beta版本，里面有几个尚不完善的功能！**
 - 我们的任务：
 - 1.收集Android基本信息
 - 2.总结哪些信息容易收集，哪些比较困难
@@ -30,10 +30,17 @@ PrivacyCollector is a homework of Measurement of mobile.
 **效果展示**
 - ![主页面]()
 
+- **总体设想**
+- 1.实现一个能记录用户核心信息的浏览器,正在写...
+
 - **功能**
-- 1.浏览器；
-- 2.捕捉用户输入；
-- ...
+- 1.实现了基本的功能浏览器,并尝试记录浏览历史和cookie；
+- 2.探测键盘的开启和关闭状态；
+- 3.伪造一个安全登陆页面,如果用户误以为真,他/她的username和password就会被记录;
+- 4.可查看记录
+
+- **感想**
+- 1.app直接获取用户输入很难,下一步可以考虑做privacyCo输入法...
 
 ### [XSY](https://github.com/cccisi/PrivacyCollector/tree/master/app/src/main/java/com/cccisi/privacycollector/xsy)
 
