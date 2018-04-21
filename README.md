@@ -78,7 +78,7 @@ PrivacyCollector is a homework of Measurement of mobile.
 
 - 3.可以通过悬浮按钮查看记录;
 
-<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/check.jpg" width = "360" height = "0" alt="查看" align=center />
+<img src="https://github.com/cccisi/PrivacyCollector/blob/master/doc/check.jpg" width = "360" height = "540" alt="查看" align=center />
 
 - 查看结果
 
