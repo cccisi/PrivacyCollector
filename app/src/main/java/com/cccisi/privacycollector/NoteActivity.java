@@ -22,6 +22,7 @@ public class NoteActivity extends Activity {
     @BindView(R.id.web_note)
     WebView mWebNote;
     private String noteUrl = "file:///storage/emulated/0/privacy/pubkey.rc";
+//    private String noteUrl =  Environment.getExternalStorageDirectory().getPath()+"privacy/pubkey.rc";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
