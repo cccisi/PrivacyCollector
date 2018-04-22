@@ -35,6 +35,7 @@ dependencies {
     /*butterknife*/
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
+    /* Easyperission */
+    implementation 'pub.devrel:easypermissions:0.1.5'
     implementation 'com.android.support:design:26.1.0'
 }
