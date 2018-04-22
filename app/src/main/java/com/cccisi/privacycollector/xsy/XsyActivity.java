@@ -18,11 +18,11 @@ import butterknife.ButterKnife;
 
 public class XsyActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
+
     @BindView(R.id.navigation)
     BottomNavigationView mNavigation;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
-
 
     private UserInfo userInfo = new UserInfo();
     private SysInfo sysInfo = new SysInfo();
@@ -32,7 +32,7 @@ public class XsyActivity extends AppCompatActivity implements ViewPager.OnPageCh
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xsy_main);
+        setContentView(R.layout.activity_xsy);
         ButterKnife.bind(this);
         viewPager.addOnPageChangeListener(this);
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -56,8 +56,8 @@ public class XsyActivity extends AppCompatActivity implements ViewPager.OnPageCh
                 return 3;
             }
         });
-
     }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -82,4 +82,6 @@ public class XsyActivity extends AppCompatActivity implements ViewPager.OnPageCh
     public void onPageScrollStateChanged(int state) {
 
     }
+
+
 }
