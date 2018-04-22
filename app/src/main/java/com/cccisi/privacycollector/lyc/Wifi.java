@@ -12,11 +12,15 @@ public class Wifi{
     public String name;
     public String status;
     public String keymanagement;
+    public boolean hiddenSSID;
+    public int networkid;
 
-    public Wifi(String name, String status,String keymanagement){
+    public Wifi(String name, String status,String keymanagement,boolean hiddenSSID,int networkid){
         this.name=name;
         this.status=status;
         this.keymanagement=keymanagement;
+        this.hiddenSSID=hiddenSSID;
+        this.networkid=networkid;
     }
 
     public String getName(){
@@ -29,5 +33,11 @@ public class Wifi{
 
     public String getKeymanagement(){
         return  keymanagement;
+    }
+    public boolean hiddenSSID(){
+        return  hiddenSSID;
+    }
+    public int networkid(){
+        return  networkid;
     }
 }

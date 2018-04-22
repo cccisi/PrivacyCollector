@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/wifiaround_name"
+
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="已保存的wifi"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/wifiaround_bssid"
+        android:layout_width="367dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="2已保存的wifi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wifiaround_name" />
+
+    <TextView
+        android:id="@+id/wifiaround_keymanagement"
+        android:layout_width="367dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="3已保存的wifi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wifiaround_bssid" />
+
+    <TextView
+        android:id="@+id/wifiaround_level"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="4已保存的wifi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wifiaround_keymanagement" />
+
+    <RatingBar
+        android:id="@+id/wifiaround_rating"
+        style="@android:style/Widget.Material.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="10dp"
+        android:isIndicator="true"
+        android:numStars="4"
+        android:rating="0"
+        android:stepSize="0.01"
+        app:layout_constraintStart_toEndOf="@+id/wifiaround_level"
+        app:layout_constraintTop_toBottomOf="@+id/wifiaround_keymanagement" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView2"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginEnd="2dp"-->
+    <!--app:layout_constraintBaseline_toBaselineOf="@+id/wifi_name"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/guideline4" />-->
+
+</android.support.constraint.ConstraintLayout>
