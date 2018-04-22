@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.cccisi.privacycollector.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView_Introduction"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.05"
-        android:background="@color/Introduction"
-        android:src="@drawable/ic_introduction" />
+        android:layout_weight="1.05">
+
+        <ImageView
+            android:id="@+id/imageView_Introduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.05"
+            android:background="@color/Introduction"
+            android:src="@drawable/ic_introduction" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="项目介绍"
+            android:textColor="@color/edit_bg"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_anchor="@id/container1"
+            app:layout_anchorGravity="bottom|end" />
+    </android.support.constraint.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,19 +38,49 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButton_Password"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_password" />
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/imageButton_BasicInformation"
+            <ImageButton
+                android:id="@+id/imageButton_BasicInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_basic_information" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="基本信息"
+                android:textColor="@color/edit_bg"
+                app:layout_anchor="@id/container2"
+                app:layout_anchorGravity="bottom|end" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_basic_information" />
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButton_Recorder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ic_recorder" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WiFi探测"
+                android:textColor="@color/edit_bg"
+                app:layout_anchor="@id/container3"
+                app:layout_anchorGravity="bottom|end" />
+        </android.support.constraint.ConstraintLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -41,19 +89,51 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButton_Recorder"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_recorder" />
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/imageButton_Note"
+            <ImageButton
+                android:id="@+id/imageButton_Password"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ic_password" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="盗号浏览器"
+                android:textColor="@color/edit_bg"
+                app:layout_anchor="@id/container4"
+                app:layout_anchorGravity="bottom|end" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_note" />
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButton_Note"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ic_note" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="浏览记录/键盘输入"
+                android:textColor="@color/edit_bg"
+                app:layout_anchor="@id/container5"
+                app:layout_anchorGravity="bottom|end" />
+        </android.support.constraint.ConstraintLayout>
+
     </LinearLayout>
 
 </LinearLayout>
