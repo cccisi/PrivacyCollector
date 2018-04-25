@@ -1,5 +1,6 @@
 package com.cccisi.privacycollector.lyc;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,11 +9,16 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.cccisi.privacycollector.R;
+import com.cccisi.privacycollector.xsy.AppAdapter;
+import com.cccisi.privacycollector.xsy.AppInfo;
+import com.cccisi.privacycollector.xsy.Utils.Constant;
+
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
@@ -34,14 +40,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
+
 /**
  * Created by cccis on 2018/4/12.
  * LYC负责
  */
 
-public class LycActivity extends AppCompatActivity {
+public class LycActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
     private List<Wifi> wifiList=new ArrayList<>();
     private List<WifiAround> wifiAroundList=new ArrayList<>();
+    private String[] permissionsneed = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -209,8 +219,23 @@ public class LycActivity extends AppCompatActivity {
 
             }
         });
-
         Button button_wifi_around = (Button) findViewById(R.id.button_wifi_around);
+
+        button_wifi_around.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //监听逻辑
+                //申请地理位置权限
+                if (EasyPermissions.hasPermissions(LycActivity.this, permissionsneed)) {
+                    //...
+                    wifiAroundFun();
+                } else {
+                    EasyPermissions.requestPermissions(LycActivity.this, "需要位置权限", 1, permissionsneed);
+                }
+            }
+        });
+    }
+    public void wifiAroundFun(){
         final Button button_wifi_close = (Button) findViewById(R.id.button_wifi_close);
         button_wifi_close.setVisibility(View.GONE);
         button_wifi_close.setOnClickListener(new View.OnClickListener() {
@@ -220,113 +245,108 @@ public class LycActivity extends AppCompatActivity {
                 button_wifi_close.setVisibility(View.GONE);
             }
         });
-        button_wifi_around.setOnClickListener(new View.OnClickListener(){
+        /*********************获取周围WIFI信息*********************/
+        WifiManager wifi_manager_around=(WifiManager)LycActivity.this.getSystemService(Context.WIFI_SERVICE);
+        Log.i("WifiConfig", "\n--------周围wifi看一看-------\n");
+        //wifi关闭时不能搜索周围wifi，需要先开启wifi
+        AlertDialog.Builder builder=new AlertDialog.Builder(LycActivity.this);
+        builder.setTitle("提示");
+        builder.setMessage("Wifi开启即可查询。正在开启中,请稍后再次点击^^");
+        builder.setCancelable(true);
+        builder.setPositiveButton("好的", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //监听逻辑
-
-                /*********************获取周围WIFI信息*********************/
-                WifiManager wifi_manager_around=(WifiManager)LycActivity.this.getSystemService(Context.WIFI_SERVICE);
-                Log.i("WifiConfig", "\n--------周围wifi看一看-------\n");
-                //wifi关闭时不能搜索周围wifi，需要先开启wifi
-                AlertDialog.Builder builder=new AlertDialog.Builder(LycActivity.this);
-                builder.setTitle("提示");
-                builder.setMessage("Wifi开启即可查询。正在开启中,请稍后再次点击^^");
-                builder.setCancelable(true);
-                builder.setPositiveButton("好的", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                if(!wifi_manager_around.isWifiEnabled()){
-                    builder.show();
-                    wifi_manager_around.setWifiEnabled(true);
-                }
-                List<ScanResult> configs_wifi_around =wifi_manager_around.getScanResults();
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        if(!wifi_manager_around.isWifiEnabled()){
+            builder.show();
+            wifi_manager_around.setWifiEnabled(true);
+        }
+        List<ScanResult> configs_wifi_around =wifi_manager_around.getScanResults();
 
 //        sortByLevel(configs_wifi_around);
-                final WifiAround[] data_around = new WifiAround[configs_wifi_around.size()];
-                final WifiAround[] data_around_temp = new WifiAround[configs_wifi_around.size()];
-                for(int k=0;k<configs_wifi_around.size();k++){
-                    data_around[k]=new WifiAround("1","2","3",1);
-                    data_around_temp[k]=new WifiAround("1","2","3",1);
-                }
-                int i=0,j=0;
-                for (ScanResult config : configs_wifi_around) {
-                    data_around_temp[i].name=config.SSID;
-                    data_around_temp[i].bssid=config.BSSID;
-                    data_around_temp[i].keymanagement=config.capabilities;
-                    data_around_temp[i].level=config.level;
-                    i++;
-                }
-                //将搜索到的wifi根据信号强度从强到弱进行排序
-                Arrays.sort(data_around_temp, new Comparator<WifiAround>() {
-                    @Override
-                    public int compare(WifiAround t1, WifiAround t2) {
-                        return t2.level-t1.level;
-                    }
-                });
-                //优先显示未加密的wifi
-                int temp=0;
-                for(int k=0;k<configs_wifi_around.size();k++){
-                    if(data_around_temp[k].keymanagement=="[ESS]"){
-                        data_around[temp++]=data_around_temp[k];
-                        Log.i("WifiConfig", data_around_temp[k].name);
-                    }
-                }
-                for(int k=0;k<configs_wifi_around.size();k++) {
-                    if (data_around_temp[k].keymanagement != "[ESS]") {
-                        data_around[temp++] = data_around_temp[k];
-                    }
-                }
-                /*********************获取周围WIFI信息完毕*********************/
+        final WifiAround[] data_around = new WifiAround[configs_wifi_around.size()];
+        final WifiAround[] data_around_temp = new WifiAround[configs_wifi_around.size()];
+        for(int k=0;k<configs_wifi_around.size();k++){
+            data_around[k]=new WifiAround("1","2","3",1);
+            data_around_temp[k]=new WifiAround("1","2","3",1);
+        }
+        int i=0,j=0;
+        for (ScanResult config : configs_wifi_around) {
+            data_around_temp[i].name=config.SSID;
+            data_around_temp[i].bssid=config.BSSID;
+            data_around_temp[i].keymanagement=config.capabilities;
+            data_around_temp[i].level=config.level;
+            i++;
+        }
+        //将搜索到的wifi根据信号强度从强到弱进行排序
+        Arrays.sort(data_around_temp, new Comparator<WifiAround>() {
+            @Override
+            public int compare(WifiAround t1, WifiAround t2) {
+                return t2.level-t1.level;
+            }
+        });
+        //优先显示未加密的wifi
+        int temp=0;
+        for(int k=0;k<configs_wifi_around.size();k++){
+            if(data_around_temp[k].keymanagement=="[ESS]"){
+                data_around[temp++]=data_around_temp[k];
+                Log.i("WifiConfig", data_around_temp[k].name);
+            }
+        }
+        for(int k=0;k<configs_wifi_around.size();k++) {
+            if (data_around_temp[k].keymanagement != "[ESS]") {
+                data_around[temp++] = data_around_temp[k];
+            }
+        }
+        /*********************获取周围WIFI信息完毕*********************/
 
-                Log.i("WifiConfig", "\n--------周围wifi瞧一瞧-------\n");
-                //创建ArrayAdapter
-                WifiAroundAdapter adapter=new WifiAroundAdapter(
-                        LycActivity.this,R.layout.wifiaround_item,R.id.wifiaround_name,wifiAroundList);
-                //清空Listview内容
-                adapter.clear();
-                //初始化wifiAround数据
-                initWifiAround(data_around);
-                Log.i("WifiConfig", "\n--------周围wifi走一走-------\n");
-                //获取ListView对象，通过调用setAdapter方法为ListView设置Adapter
-                ListView listView_around=(ListView)findViewById(R.id.list_view_wifi_saved);
-                listView_around.setAdapter(adapter);
-                Log.i("WifiConfig", "\n--------周围wifi转一转-------\n");
-                listView_around.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Log.i("Open", "-------创建提示框之前--------");
+        Log.i("WifiConfig", "\n--------周围wifi瞧一瞧-------\n");
+        //创建ArrayAdapter
+        WifiAroundAdapter adapter=new WifiAroundAdapter(
+                LycActivity.this,R.layout.wifiaround_item,R.id.wifiaround_name,wifiAroundList);
+        //清空Listview内容
+        adapter.clear();
+        //初始化wifiAround数据
+        initWifiAround(data_around);
+        Log.i("WifiConfig", "\n--------周围wifi走一走-------\n");
+        //获取ListView对象，通过调用setAdapter方法为ListView设置Adapter
+        ListView listView_around=(ListView)findViewById(R.id.list_view_wifi_saved);
+        listView_around.setAdapter(adapter);
+        Log.i("WifiConfig", "\n--------周围wifi转一转-------\n");
+        listView_around.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("Open", "-------创建提示框之前--------");
 
-                        final WifiAround wifiaround=wifiAroundList.get(position);
+                final WifiAround wifiaround=wifiAroundList.get(position);
 //                        Log.i("Open", wifiaround.keymanagement);
 //                        Log.i("Open", "[ESS]");
 
-                        if(wifiaround.keymanagement.equals("[ESS]")){
-                            Log.i("Open", "-------要创建提示框--------");
-                            AlertDialog.Builder builder_wifiopen=new AlertDialog.Builder(LycActivity.this);
-                            builder_wifiopen.setTitle("提示");
-                            builder_wifiopen.setMessage("确定开启名为\""+wifiaround.name+"\"的热点？");
-                            builder_wifiopen.setCancelable(true);
-                            builder_wifiopen.setPositiveButton("是的", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    WifiManager wifi_control = (WifiManager)LycActivity.this.getSystemService(Context.WIFI_SERVICE);
-                                    //针对6.0开启WRITE_PERMISSION权限
-                                    setBrightnessMode(LycActivity.this,1);
-                                    //如果热点处于开启状态，则先关闭之
-                                    if(isWifiApEnabled(wifi_control)){
-                                        closeWifiAp(LycActivity.this);
-                                    }
-                                    //如果wifi处于打开状态，则关闭wifi
-                                    if(wifi_control.isWifiEnabled()){
-                                        wifi_control.setWifiEnabled(false);
-                                    }
-                                    startWifiAp(wifiaround.name,"",true,wifi_control);
-                                    //显示关闭热点按钮
-                                    button_wifi_close.setVisibility(View.VISIBLE);
+                if(wifiaround.keymanagement.equals("[ESS]")){
+                    Log.i("Open", "-------要创建提示框--------");
+                    AlertDialog.Builder builder_wifiopen=new AlertDialog.Builder(LycActivity.this);
+                    builder_wifiopen.setTitle("提示");
+                    builder_wifiopen.setMessage("确定开启名为\""+wifiaround.name+"\"的热点？");
+                    builder_wifiopen.setCancelable(true);
+                    builder_wifiopen.setPositiveButton("是的", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            WifiManager wifi_control = (WifiManager)LycActivity.this.getSystemService(Context.WIFI_SERVICE);
+                            //针对6.0开启WRITE_PERMISSION权限
+                            setBrightnessMode(LycActivity.this,1);
+                            //如果热点处于开启状态，则先关闭之
+                            if(isWifiApEnabled(wifi_control)){
+                                closeWifiAp(LycActivity.this);
+                            }
+                            //如果wifi处于打开状态，则关闭wifi
+                            if(wifi_control.isWifiEnabled()){
+                                wifi_control.setWifiEnabled(false);
+                            }
+                            startWifiAp(wifiaround.name,"",true,wifi_control);
+                            //显示关闭热点按钮
+                            button_wifi_close.setVisibility(View.VISIBLE);
 //                                    button_wifi_close.setVisibility(View.VISIBLE);
 //                                    WifiConfiguration wifiopen=new WifiConfiguration();
 //                                    wifiopen.SSID=wifiaround.name;
@@ -352,21 +372,21 @@ public class LycActivity extends AppCompatActivity {
 //                                        e.printStackTrace();
 //                                        Toast.makeText(LycActivity.this,"创建热点失败",Toast.LENGTH_SHORT).show();
 //                                    }
-                                    dialogInterface.dismiss();
-                                }
-                            });
-                            builder_wifiopen.setNegativeButton("还没想好",new DialogInterface.OnClickListener(){
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
-                            builder_wifiopen.show();
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder_wifiopen.setNegativeButton("还没想好",new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder_wifiopen.show();
 //                            Log.i("Open", "-------创建提示框之后--------");
-                        }
-                        else{
-                            Toast.makeText(LycActivity.this,"该WiFi已加密，不能伪造……",Toast.LENGTH_SHORT).show();
-                        }
+                }
+                else{
+                    Toast.makeText(LycActivity.this,"该WiFi已加密，不能伪造……",Toast.LENGTH_SHORT).show();
+                }
 
 //                        Toast.makeText(LycActivity.this,"信号强度"+wifiaround.level,Toast.LENGTH_SHORT).show();
 //                        switch (wifiaround.getStatus()){
@@ -381,18 +401,16 @@ public class LycActivity extends AppCompatActivity {
 //                                break;
 //                        }
 
-                    }
-                });
-            }
-            public void initWifiAround(WifiAround[] data_around){
-
-                for (int i=0;i<data_around.length;i++) {
-                    WifiAround lyc = new WifiAround(data_around[i].name,data_around[i].bssid,data_around[i].keymanagement,data_around[i].level);
-                    wifiAroundList.add(lyc);
-                }
-
             }
         });
+    }
+    public void initWifiAround(WifiAround[] data_around){
+
+        for (int i=0;i<data_around.length;i++) {
+            WifiAround lyc = new WifiAround(data_around[i].name,data_around[i].bssid,data_around[i].keymanagement,data_around[i].level);
+            wifiAroundList.add(lyc);
+        }
+
     }
     public boolean isWifiApEnabled(WifiManager mWifiManager){
         try {
@@ -490,6 +508,28 @@ public class LycActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    protected String[] needPermissions = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+    };
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+    public void onPermissionsGranted(int requestCode, List<String> list) {
+        // Some permissions have been granted
+        //        // ...
+        Toast.makeText(LycActivity.this,"你好",Toast.LENGTH_SHORT).show();
+        wifiAroundFun();
+    }
+    public void onPermissionsDenied(int requestCode, List<String> list) {
+        // Some permissions have been denied
+        // ...
+        Toast.makeText(LycActivity.this,"权限获取失败……",Toast.LENGTH_SHORT).show();
     }
 }
 
