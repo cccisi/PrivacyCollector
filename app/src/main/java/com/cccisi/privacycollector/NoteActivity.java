@@ -21,7 +21,8 @@ public class NoteActivity extends Activity {
     private final String TAG = "NoteActivit";
     @BindView(R.id.web_note)
     WebView mWebNote;
-    private String noteUrl = "file:///storage/emulated/0/privacy/pubkey.rc";
+    //    private String noteUrl = "file:///storage/emulated/0/privacy/pubkey.rc";
+    private String noteUrl = "file:///sdcard/privacy/privacy.rc";
 //    private String noteUrl =  Environment.getExternalStorageDirectory().getPath()+"privacy/pubkey.rc";
 
     @Override

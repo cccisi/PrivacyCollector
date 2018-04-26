@@ -18,7 +18,7 @@ public class FileOperator {
 
     public static final String FOLDER_NAME = "sdcard" + File.separator + "privacy";//文件路径
     public static final String FILE_NAME_PK = "privacy.rc";
-    public static final String SHARE_PATH_PK = "/sdcard/privacy/pubkey.rc";
+    public static final String SHARE_PATH_PK = "/sdcard/privacy/privacy.rc";
 
     //创建分享文件夹
     public static void createFolder() {
